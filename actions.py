@@ -1,0 +1,4 @@
+NUM_ACTIONS = 3
+LEFT = 0
+NONE = 1
+RIGHT = 2
