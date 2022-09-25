@@ -30,8 +30,8 @@ class DeepQModel(Base):
         self.env = env 
 
         self.number_of_runs = 5000
-        self.max_frames_for_run = 1000 
-        self.target_points = 100
+        self.max_frames_for_run = 900
+        self.target_points = 90
 
         self.gamma = 0.995 # discounting factor
         self.epsilon = 1 # for random-exploration actions
@@ -40,8 +40,8 @@ class DeepQModel(Base):
         self.epsilon_interval = (
             self.epsilon_max - self.epsilon_min
         ) 
-        self.epsilon_random_frames = 100000 # for this number of frames - only random and observe
-        self.epsilon_random_decrease = 200000 # for this number of frames decrease probability of random action
+        self.epsilon_random_frames = 50000 # for this number of frames - only random and observe
+        self.epsilon_random_decrease = 100000 # for this number of frames decrease probability of random action
 
         self.batch_size = 16  # how many frames to take from memory
         self.max_memory_length = 10000
@@ -53,10 +53,6 @@ class DeepQModel(Base):
         # Based on that loss can be calculated and model_action can learn. 
         # After some time model_reward is updated to model_action
         self.model_reward = self.build_model()
-    
-
-    def learn_from_past(self):
-        pass
 
 
     def train(self):
@@ -193,6 +189,15 @@ class DeepQModel(Base):
         action_rewards = self.model_action(state_tensor, training=False)
         action = tf.argmax(action_rewards[0]).numpy()
         return action
+
+
+    def save_model(self, path):
+        self.model_action.save(path)
+
+
+    def load_model(self, path):
+        self.model_action = keras.models.load_model(path)
+        self.model_reward = keras.models.load_model(path)
 
 
     def get_name(self):

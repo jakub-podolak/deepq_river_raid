@@ -14,11 +14,15 @@ if __name__ == "__main__":
 
     print("***** TRAINING ******")
     model.train()
+    model.save_model('checkpoints/deepq_model')
+
+    model.load_model('checkpoints/deepq_model')
 
     print("***** EVALUATING RUNS ******")
     score = 0
     run_number = 0
 
+    env.init_gui()
     env.reset_state()
     next_state = env.get_current_state()
     running = True 

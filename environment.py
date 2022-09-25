@@ -29,6 +29,8 @@ class Environment(object):
         
         self.next_map_row = 0
         self.loaded_map = cv2.imread(str(MAPS_PATH / selected_map))
+        # rotate map
+        self.loaded_map = cv2.rotate(self.loaded_map, cv2.ROTATE_180)
 
         # BGR to RGB
         self.loaded_map = self.loaded_map[...,::-1]
@@ -50,7 +52,7 @@ class Environment(object):
         self.read_random_map()
         self.current_board = np.zeros((STATE_HEIGHT, STATE_WIDTH, 3), dtype='uint8')
 
-        for _ in range(SCREEN_HEIGHT):
+        for _ in range(STATE_HEIGHT):
             self.move_board_one_line()
 
         # initialize player
@@ -59,12 +61,14 @@ class Environment(object):
 
 
     def __init__(self):
+        self.reset_state()
+
+
+    def init_gui(self):
         # initialize pygame
         pygame.init() 
         self.screen = pygame.display.set_mode((SCREEN_HEIGHT, SCREEN_WIDTH))
         self.clock = pygame.time.Clock()
-
-        self.reset_state()
         
 
     def set_window_name(self, window_name):

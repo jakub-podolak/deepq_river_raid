@@ -12,10 +12,6 @@ class RandomModel(Base):
         pass
     
 
-    def learn_from_past(self):
-        pass
-
-
     def train(self):
         pass
 
