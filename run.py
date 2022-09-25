@@ -12,9 +12,9 @@ if __name__ == "__main__":
     model = SELECTED_MODEL(env, HYPERPARAMS)
     env.set_window_name(model.get_name())
 
-    print("***** TRAINING ******")
-    model.train()
-    model.save_model('checkpoints/deepq_model')
+    # print("***** TRAINING ******")
+    # model.train()
+    # model.save_model('checkpoints/deepq_model')
 
     model.load_model('checkpoints/deepq_model')
 
