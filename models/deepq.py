@@ -29,7 +29,7 @@ class DeepQModel(Base):
     def __init__(self, env, hyperparams):
         self.env = env 
 
-        self.number_of_runs = 5000
+        self.number_of_runs = 4000
         self.max_frames_for_run = 900
         self.target_points = 90
 
@@ -43,7 +43,7 @@ class DeepQModel(Base):
         self.epsilon_random_frames = 50000 # for this number of frames - only random and observe
         self.epsilon_random_decrease = 100000 # for this number of frames decrease probability of random action
 
-        self.batch_size = 16  # how many frames to take from memory
+        self.batch_size = 32  # how many frames to take from memory
         self.max_memory_length = 10000
 
         # less stable model that predicts makes actions based on predicted Q-values
