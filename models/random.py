@@ -1,7 +1,5 @@
 import random
 
-import matplotlib.pyplot as plt
-
 from models.base import Base
 from actions import LEFT, NONE, RIGHT
 

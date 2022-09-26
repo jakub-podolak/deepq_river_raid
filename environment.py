@@ -25,6 +25,7 @@ BLUE = (0, 0, 255)
 class Environment(object):
 
     def read_random_map(self):
+        """ Reads random map png from MAPS_PATH and uses it to generate next states """
         selected_map = random.choice(os.listdir(MAPS_PATH))
         
         self.next_map_row = 0

@@ -4,7 +4,7 @@ from tensorflow import keras
 from tensorflow.keras import layers
 
 from models.base import Base
-from actions import NUM_ACTIONS, LEFT, NONE, RIGHT
+from actions import NUM_ACTIONS
 
 
 class DeepQModel(Base):
