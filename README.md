@@ -3,7 +3,7 @@
 
 The model's task is to get as far as possible, whitout colliding with green walls.
 
-The only information that model gets is the current state (80x80 RGB map) and list off possible actions (LEFT, RIGHT, None).
+The only information that model gets is the current state (80x80 RGB map) and list of possible actions (LEFT, RIGHT, None).
 
 Based on DeepQ Reinforcement Learning technique - model tries to learn Q-function by taking actions and evaluating them in the future.
 
